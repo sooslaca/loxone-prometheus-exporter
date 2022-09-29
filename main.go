@@ -6,13 +6,13 @@ import (
 	"os"
 	"time"
 
-	"github.com/XciD/loxone-prometheus-exporter/config"
+	"github.com/sooslaca/loxone-prometheus-exporter/config"
 
-	loxone "github.com/XciD/loxone-ws"
 	"github.com/bep/debounce"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	log "github.com/sirupsen/logrus"
+	loxone "github.com/sooslaca/loxone-ws"
 )
 
 var (
@@ -55,7 +55,7 @@ func main() {
 	prometheus.MustRegister(values)
 
 	// Open socket
-	lox, err := loxone.New(cfg.Host, cfg.Port, cfg.User, cfg.Password)
+	lox, err := loxone.New(loxone.WithHost(cfg.Host), loxone.WithPort(cfg.Port), loxone.WithUsernameAndPassword(cfg.User, cfg.Password))
 
 	if err != nil {
 		log.Error(err)

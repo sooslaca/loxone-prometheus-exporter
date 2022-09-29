@@ -1,6 +1,6 @@
 FROM golang:1.16 as builder
 
-ENV PROJECT github.com/XciD/loxone-prometheus-exporter
+ENV PROJECT github.com/sooslaca/loxone-prometheus-exporter
 ENV GO111MODULE on
 WORKDIR /go/src/$PROJECT
 

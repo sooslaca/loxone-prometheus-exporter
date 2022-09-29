@@ -23,7 +23,7 @@ func (e *ReadConfigErr) Error() string {
 // Config holds our config values
 type Config struct {
 	Host     string
-	Port     int
+	Port     uint16
 	User     string
 	Password string
 }

@@ -24,3 +24,6 @@ coverage.txt
 
 # Config files
 loxone-prometheus-exporter.yml
+
+# Binary
+loxone-prometheus-exporter
