@@ -10,9 +10,9 @@ COPY go.sum /go/src/$PROJECT
 RUN go mod download
 
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o /main .
+RUN CGO_ENABLED=0 GOOS=linux go build -o /exporter .
 
 FROM alpine as release
-COPY --from=builder /main /main
+COPY --from=builder /exporter /exporter
 
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["/exporter"]
