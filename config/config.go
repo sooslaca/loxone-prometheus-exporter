@@ -26,6 +26,7 @@ type Config struct {
 	Port     uint16
 	User     string
 	Password string
+	LogLevel string
 }
 
 // NewConfig reads the config into a new Config object
@@ -39,6 +40,7 @@ func NewConfig() (*Config, error) {
 	pflag.Int("port", 8080, "Port of the Miniserver")
 	pflag.String("user", "", "Username for Miniserver")
 	pflag.String("password", "", "Password for Miniserver")
+	pflag.String("loglevel", "info", "Loglevel")
 	pflag.Parse()
 	viper.BindPFlags(pflag.CommandLine)
 

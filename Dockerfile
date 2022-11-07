@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 GOOS=linux go build -o /exporter .
 
-FROM alpine as release
+FROM alpine:3.16 as release
 COPY --from=builder /exporter /exporter
 
 ENTRYPOINT ["/exporter"]

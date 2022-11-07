@@ -47,6 +47,16 @@ func main() {
 		log.Error(err)
 		return
 	}
+	switch cfg.LogLevel {
+	case "debug":
+		log.SetLevel(log.DebugLevel)
+	case "warn":
+		log.SetLevel(log.WarnLevel)
+	case "error":
+		log.SetLevel(log.ErrorLevel)
+	default:
+		log.Warnf("Home: invalid log level supplied: '%s'", cfg.LogLevel)
+	}
 
 	// Start prometheus server
 	http.Handle("/metrics", promhttp.Handler())
