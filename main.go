@@ -49,13 +49,19 @@ func main() {
 	}
 	switch cfg.LogLevel {
 	case "debug":
+		log.Info("Loglevel set to DEBUG")
 		log.SetLevel(log.DebugLevel)
+	case "info":
+		log.Info("Loglevel set to INFO")
+		log.SetLevel(log.InfoLevel)
 	case "warn":
+		log.Info("Loglevel set to WARN")
 		log.SetLevel(log.WarnLevel)
 	case "error":
+		log.Info("Loglevel set to ERROR")
 		log.SetLevel(log.ErrorLevel)
 	default:
-		log.Warnf("Home: invalid log level supplied: '%s'", cfg.LogLevel)
+		log.Warnf("Invalid log level supplied: '%s'", cfg.LogLevel)
 	}
 
 	// Start prometheus server
