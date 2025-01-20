@@ -31,3 +31,13 @@ cover:
 .PHONY: docker-build
 docker-build:
 	docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 --tag $(NAME):latest  --push .
+
+.PHONY: docker
+docker:
+	@docker build --progress=plain -t laca/loxone-prometheus-exporter .
+
+.PHONY: push
+push:
+	@docker tag laca/loxone-prometheus-exporter registry.home/laca/loxone-prometheus-exporter
+	@docker push registry.home/laca/loxone-prometheus-exporter
+	@docker rmi registry.home/laca/loxone-prometheus-exporter
